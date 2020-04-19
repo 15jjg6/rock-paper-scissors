@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+	<p> Hello world! </p>
+
+  <script>
+    // Your JavaScript goes here!
+
+function computerPlay() {
+	return (Math.floor((Math.random() * 3)));
+}
+	
+function translateSelection(input) {
+	switch(input) {
+		case 0: 
+			return 'Rock';
+			break;
+		case 1: 
+			return 'Paper'; 
+			break;
+		case 2: 
+			return 'Scissors';
+		case 'rock' : 
+			return 0; 
+			break;
+		case 'paper':  
+			return 1; 
+			break;
+		case 'scissors' :
+			return 2; 
+	}
+	return;
+}
+
+function playGame(playerSelection, computerSelection) {
+	console.log(computerSelection);
+	if (playerSelection === computerSelection) {
+		return "Tie Game!" ; 
+	} else if (playerSelection === (computerSelection  - 1) || (playerSelection === 2 && computerSelection === 0)) {
+		return `You Lose! ${translateSelection(playerSelection)} loses to ${translateSelection(computerSelection)}`;
+	} else {
+		return `You Win! ${translateSelection(playerSelection)} beats ${translateSelection(computerSelection)}`;
+	}
+}
+
+function sanatizeInput(humanInput) {
+	const input = humanInput.toLowerCase();
+	if (input === "rock" ) {
+		return 0; 
+	} else if (input === "paper") { 
+		return 1; 
+		}
+	else if (input === "scissors") { 
+		return 2 ;
+	} else {
+		throw "Incorrect Input";
+		return;
+	}
+}
+
+function main() { 
+	while (1) {
+		console.log("Hello! Please input your selection of rock paper or scissors. " ) ;
+		const input = prompt("Choose rock paper or scissors: " );
+		const input_as_number = sanatizeInput(input); 
+		console.log(input_as_number)
+		const result = playGame(input_as_number, computerPlay()); 
+		prompt(result);
+}
+}
+
+main();
+  </script>
+</body>
+</html>
