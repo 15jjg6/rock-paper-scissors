@@ -1,0 +1,30 @@
+background {
+	color: pink;
+}
+
+.option {
+	position: relative;
+	max-width: 300px; 
+	max-height: 300px; 
+	padding: 0px;
+	overflow: hidden;
+	border: 10px solid #00fff9;
+	border-radius: 400px;
+}
+
+.option #rock {
+	position: relative;
+	margin: -170px -480px -140px -40px;
+	margin:-180px -510px -140px -40px;
+}
+
+.option #paper {
+	position: relative;
+	margin: -160px -275px -110px -275px;
+}
+
+.option #scissors {
+	position: relative;
+	margin: -125px -20px -110px -430px;
+	margin: -200px -70px -100px -620px;
+}
