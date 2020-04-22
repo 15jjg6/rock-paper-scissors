@@ -37,6 +37,10 @@ a {
 	max-width: 750px;
 }
 
+.press {
+	filter: brightness(50%);
+}
+
 .option {
 	position: relative;
 	max-width: 300px; 
@@ -70,4 +74,36 @@ a {
 	max-height: 150px;
 	max-width: 500px;
 	text-align: center;
+}
+
+.playing {
+	transform: scale(1.05); 
+	border-color: #ffc600; 
+	box-shadow: 0 0 1rem #ffc600;
+}
+
+#scores {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.scoreboard {
+	background-color: #b967ff;
+	border-radius: 10px;
+	margin: 10px;
+}
+
+h2 {
+	color: #FFFFFF;
+	min-width: 100px;
+}
+
+.score-value {
+       background-color: white;
+       color: #b967ff;
+}       
+
+.win {
+	background-color: #05ffa1;
 }

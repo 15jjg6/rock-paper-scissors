@@ -41,23 +41,38 @@ function winLossOrTie(player1, player2) {
 	}
 }
 
-function gameResult(playerChoice, computerChoice) {
-	const result = winLossOrTie(playerChoice, computerChoice);
-	if (result === 0) {
-		return `Tie Game! You and your opponent both chose ${numberToSelection(playerChoice)}!` ; 
+function updateScores(result) {
+	const youScore = document.getElementById('youScore');
+	const cpuScore = document.getElementById('cpuScore');
+	if (result === 1) {
+		youScore.innerHTML = parseInt(youScore.innerHTML) + 1;
+		youScore.classList.add('win');
+		cpuScore.classList.remove('win');
 	} else if (result === -1) {
-		return `You Lose! ${numberToSelection(playerChoice)} loses to ${numberToSelection(computerChoice)}.`;
+		cpuScore.innerHTML = parseInt(youScore.innerHTML) + 1;
+		cpuScore.classList.add('win');
+		youScore.classList.remove('win');
 	} else {
-		return `You Win! ${numberToSelection(playerChoice)} beats ${numberToSelection(computerChoice)}!`;
+		youScore.classList.remove('win');
+		cpuScore.classList.remove('win');
 	}
 }
+
+
+		
+
 function interfaceWithHTML(e) {
 	const playerChoice = selectionToNumber(e.srcElement.id); 
-	const result = gameResult(playerChoice, computerPlay()); 
-	const output = document.querySelector('#result-message'); 
-	console.log(output);
-	output.innerHTML = result;
-	return;
+	const result = winLossOrTie(playerChoice, computerPlay()); 
+	console.log(result);
+	updateScores(result);
+}
+
+function removeTransition(e) {
+	if (e.propertyName !== 'transform') {
+		return; 
+	}
+	e.srcElement.classList.remove('playing');
 }
 
 const options = document.getElementsByClassName('option');
@@ -66,4 +81,6 @@ console.log(options);
 Array.from(options).forEach(function (option, index) {
 	option.addEventListener('click', interfaceWithHTML);
 });
+
+
 
