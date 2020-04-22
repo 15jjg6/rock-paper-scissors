@@ -46,9 +46,9 @@ function gameResult(playerChoice, computerChoice) {
 	if (result === 0) {
 		return `Tie Game! You and your opponent both chose ${numberToSelection(playerChoice)}!` ; 
 	} else if (result === -1) {
-		return `You Lose! ${numberToSelection(playerChoice)} loses to ${numberToSelection(computerChoice)}`;
+		return `You Lose! ${numberToSelection(playerChoice)} loses to ${numberToSelection(computerChoice)}.`;
 	} else {
-		return `You Win! ${numberToSelection(playerChoice)} beats ${numberToSelection(computerChoice)}`;
+		return `You Win! ${numberToSelection(playerChoice)} beats ${numberToSelection(computerChoice)}!`;
 	}
 }
 function interfaceWithHTML(e) {

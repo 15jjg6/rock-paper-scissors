@@ -1,10 +1,46 @@
-background {
-	color: pink;
+body {
+	display: flex; 
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	align-content: space-between;
+	background: #ff71ce; 
+	margin: auto;
+	height: 100%;
+}
+	
+h1 { 
+	font-family: 'Tinos', serif;
+	color: #FFFFFF;
+	background-color: #01cdfe;
+	padding: 5px 20px 5px 20px;
+	font-size: 50px;
+}
+
+p { 
+	font-family: 'Tinos', serif;
+	font-size: 38px;
+}
+
+a {
+	color: #b967ff;
+	background-color: white;
+	padding: 4px;
+	font-family: 'Tinos', serif;
+}
+
+#choices {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	max-width: 750px;
 }
 
 .option {
 	position: relative;
 	max-width: 300px; 
+	min-width: 300px;
 	max-height: 300px; 
 	padding: 0px;
 	overflow: hidden;
@@ -27,4 +63,11 @@ background {
 	position: relative;
 	margin: -125px -20px -110px -430px;
 	margin: -200px -70px -100px -620px;
+}
+
+#results { 
+	min-height: 150px;
+	max-height: 150px;
+	max-width: 500px;
+	text-align: center;
 }
