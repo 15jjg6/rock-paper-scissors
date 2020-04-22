@@ -1,5 +1,3 @@
-// Your JavaScript goes here!
-
 function computerPlay() {
 	return (Math.floor((Math.random() * 3)));
 }
@@ -18,18 +16,7 @@ function numberToSelection(input) {
 	return;
 }
 
-function playGame(playerSelection, computerSelection) {
-	console.log(computerSelection);
-	if (playerSelection === computerSelection) {
-		return `Tie Game! You and your opponent both chose ${numberToSelection(playerSelection)}!` ; 
-	} else if (playerSelection === (computerSelection  - 1) || (playerSelection === 2 && computerSelection === 0)) {
-		return `You Lose! ${numberToSelection(playerSelection)} loses to ${numberToSelection(computerSelection)}`;
-	} else {
-		return `You Win! ${numberToSelection(playerSelection)} beats ${numberToSelection(computerSelection)}`;
-	}
-}
-
-function sanatizeInput(humanInput) {
+function selectionToNumber(humanInput) {
 	const input = humanInput.toLowerCase();
 	if (input === "rock" ) {
 		return 0; 
@@ -44,16 +31,39 @@ function sanatizeInput(humanInput) {
 	}
 }
 
-function main() { 
-	while (1) {
-		console.log("Hello! Please input your selection of rock paper or scissors. " ) ;
-		const input = prompt("Choose rock paper or scissors: " );
-		const input_as_number = sanatizeInput(input); 
-		console.log(input_as_number)
-		const result = playGame(input_as_number, computerPlay()); 
-		prompt(result);
-}
+function winLossOrTie(player1, player2) {
+	if (player1 === player2) {
+		return 0; 	// tie
+	} else if (player1 === (player2  - 1) || (player1 === 2 && player2 === 0)) {
+		return -1; 	// loss
+	} else {
+		return 1;	// win
+	}
 }
 
-main();
+function gameResult(playerChoice, computerChoice) {
+	const result = winLossOrTie(playerChoice, computerChoice);
+	if (result === 0) {
+		return `Tie Game! You and your opponent both chose ${numberToSelection(playerChoice)}!` ; 
+	} else if (result === -1) {
+		return `You Lose! ${numberToSelection(playerChoice)} loses to ${numberToSelection(computerChoice)}`;
+	} else {
+		return `You Win! ${numberToSelection(playerChoice)} beats ${numberToSelection(computerChoice)}`;
+	}
+}
+function interfaceWithHTML(e) {
+	const playerChoice = selectionToNumber(e.srcElement.id); 
+	const result = gameResult(playerChoice, computerPlay()); 
+	const output = document.querySelector('#result-message'); 
+	console.log(output);
+	output.innerHTML = result;
+	return;
+}
+
+const options = document.getElementsByClassName('option');
+
+console.log(options);
+Array.from(options).forEach(function (option, index) {
+	option.addEventListener('click', interfaceWithHTML);
+});
 
